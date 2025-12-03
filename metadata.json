@@ -1,0 +1,8 @@
+{
+  "name": "Amantes.com",
+  "description": "A plataforma social exclusiva movida a tokens Crisex. Conecte-se, assista lives e colecione momentos.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

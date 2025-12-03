@@ -1,0 +1,12 @@
+runtime: nodejs18
+
+handlers:
+  # Serve todos os arquivos estáticos gerados pelo build
+  - url: /(.*\.(js|css|png|jpg|svg|ico|json))$
+    static_files: dist/\1
+    upload: dist/.*\.(js|css|png|jpg|svg|ico|json)$
+
+  # Qualquer outra rota redireciona para o index.html (SPA)
+  - url: /.*
+    static_files: dist/index.html
+    upload: dist/index.html
