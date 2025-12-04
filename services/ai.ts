@@ -1,8 +1,14 @@
 import { GoogleGenAI } from "@google/genai";
 
+// Chave fornecida para o projeto dev-acolyte-480118-e7
+const HARDCODED_KEY = "AIzaSyAae50KSUnuFM9h0IvKaORM4R3i4Li3clk";
+
 const getAIClient = () => {
-  const apiKey = process.env.API_KEY;
+  // Tenta pegar do ambiente, senão usa a chave fixa do projeto
+  const apiKey = process.env.API_KEY || HARDCODED_KEY;
+  
   if (!apiKey) {
+    console.error("API Key não encontrada.");
     return null;
   }
   return new GoogleGenAI({ apiKey });
@@ -27,7 +33,6 @@ export const generateWittyComment = async (context: string): Promise<string> => 
   const ai = getAIClient();
   
   if (!ai) {
-    // Fallback if no API key
     return FALLBACK_COMMENTS[Math.floor(Math.random() * FALLBACK_COMMENTS.length)];
   }
 
